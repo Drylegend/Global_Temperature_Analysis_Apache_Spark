@@ -1,3 +1,73 @@
+# Global Temperature Analysis using Apache Spark
+
+A Big Data Analytics project for identifying long-term climate trends, detecting anomalies, and forecasting future temperature behavior using Apache Spark.
+
+---
+
+## Overview
+
+This project analyzes **160+ years of historical global temperature data** using PySpark and distributed data processing.  
+The workflow includes:
+
+- Data cleaning and preprocessing  
+- Distributed temperature trend analysis  
+- Anomaly detection (Z-Score method)  
+- Machine learning forecasting  
+- Power BI dashboard visualization  
+
+A research paper based on this analysis is currently under preparation.
+
+---
+
+## Tech Stack
+
+### Big Data Processing
+- Apache Spark (PySpark)
+- Spark SQL
+- Distributed DataFrame API
+
+### Machine Learning
+- Random Forest Regressor
+- Linear Regression
+- Z-Score anomaly detection
+
+### Visualization
+- Power BI  
+- Matplotlib  
+
+### Tools / Languages
+- Python  
+- Jupyter Notebook / PySpark Shell  
+
+---
+
+## Dataset Summary
+
+| Dataset Name                       | Rows      | Columns | Date Range | Description                 |
+|-----------------------------------|-----------|---------|------------|-----------------------------|
+| GlobalLandTemperaturesByCountry   | 577,462   | 4       | 1743–2013  | Country-level temperatures |
+| GlobalLandTemperaturesByState     | 645,000+  | 4       | 1850–2013  | State-level temperatures   |
+| GlobalLandTemperaturesByMajorCity | 239,177   | 7       | 1743–2013  | Major city temperatures    |
+| GlobalTemperatures                | 3,192     | 9       | 1750–2015  | Global monthly temperatures |
+| **Final Enriched Dataset**        | 233,506   | 11      | 1850–2013  | Unified dataset for ML     |
+
+---
+
+## Methodology
+
+### 1. Data Cleaning & Preprocessing
+- Removal of missing/invalid records  
+- Standardized date formatting  
+- Feature extraction (year, decade, season)  
+- Dataset merging and enrichment  
+
+### 2. Distributed Trend Analysis (PySpark)
+- Global, country, state, and city temperature trends  
+- Decadal and seasonal shift analysis  
+- Yearly average temperature computation  
+
+### 3. Anomaly Detection (Z-Score)
+
 
 Cities with **|z| > 2.5** were flagged as temperature anomalies.
 
