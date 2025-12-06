@@ -1,24 +1,24 @@
 🌍 Global Temperature Analysis using Apache Spark
 
-A Big Data Analytics project for understanding long-term climate trends, anomalies, and forecasts.
+A Big Data Analytics project for identifying long-term climate trends, anomalies, and forecasting using distributed computation.
 
 📌 Overview
 
-This project analyzes more than 170 years of global, national, and regional temperature data using PySpark, distributed computation, and machine-learning forecasting. The pipeline integrates multiple historical climate datasets into an enriched, multi-scale analytical model covering:
+This project analyzes 160+ years of historical global temperature data using Apache Spark to uncover long-term climate patterns, detect anomalies, and forecast future temperature behavior.
 
-Global temperature trends
+The work includes:
 
-Country-level temperature patterns
+Data preparation
 
-State-level warming dynamics
+Distributed Spark analytics
 
-City-level anomaly detection
+Trend and anomaly computation
 
-Forecasting future temperature behavior
+Machine learning forecasting
 
-The results show a persistent rise in global average temperature since the mid-19th century, with accelerated warming after the mid-20th century. A supervised ML model is used to predict future temperature trajectories, achieving high accuracy (R² ≈ 0.99).
+Power BI visualization
 
-This work demonstrates a complete big-data workflow—from ingestion and cleansing to distributed analytics, forecasting, and visualization.
+A research paper based on this analysis is currently under preparation.
 
 🛠️ Tech Stack
 Big Data Processing
@@ -27,7 +27,7 @@ Apache Spark (PySpark)
 
 Spark SQL
 
-Distributed DataFrame operations
+Distributed DataFrame API
 
 Machine Learning
 
@@ -35,7 +35,7 @@ Random Forest Regressor
 
 Linear Regression
 
-Statistical anomaly detection (z-score)
+Z-Score anomaly detection
 
 Visualization
 
@@ -43,79 +43,55 @@ Power BI
 
 Matplotlib
 
-Languages / Tools
+Programming / Tools
 
 Python
 
-Jupyter / PySpark Shell
+Jupyter + PySpark Shell
 
 📂 Dataset Summary
-
-Merged from multiple Kaggle/NASA/global archives:
-
 Dataset Name	Rows	Columns	Date Range	Description
-GlobalLandTemperaturesByCountry	577,462	4	1743–2013	Country-level temps
-GlobalLandTemperaturesByState	645,000+	4	1850–2013	State-level temps
-GlobalLandTemperaturesByMajorCity	239,177	7	1743–2013	Major-city temps
-GlobalTemperatures	3,192	9	1750–2015	Global monthly temps
+GlobalLandTemperaturesByCountry	577,462	4	1743–2013	Country-level temperatures
+GlobalLandTemperaturesByState	645,000+	4	1850–2013	State-level temperatures
+GlobalLandTemperaturesByMajorCity	239,177	7	1743–2013	Major city temperatures
+GlobalTemperatures	3,192	9	1750–2015	Global monthly temperatures
 Final Enriched Dataset	233,506	11	1850–2013	Unified dataset for modeling
-
-Dataset preparation included:
-
-Cleaning missing/invalid temperature values
-
-Standardizing date formats
-
-Extracting year, season, and multi-decade windows
-
-Merging global, country, state, and city datasets
-
-Generating enriched features for ML
-
 🔍 Methodology
-
-This project follows a multi-stage pipeline:
-
 1️⃣ Data Cleaning & Preprocessing
 
-Remove invalid temperature entries
+Removed missing or invalid entries
 
-Resolve mismatched geographic labels
+Standardized date formats
 
-Aggregate by year, season, and decades
+Extracted features (year, decade, season)
 
-Compute long-term averages for stability
+Merged datasets with location hierarchy
 
-Merge datasets for unified analysis
+Generated enriched ML-ready dataset
 
 2️⃣ Distributed Trend Analysis (PySpark)
 
-Using Spark SQL & DataFrames to compute:
+Global long-term trend analysis
 
-Yearly and seasonal temperature trends
+Country and state-level warming evaluation
 
-50-year period analysis
+Seasonal and decadal variations
 
-Geographic variation
+City-level temperature pattern tracking
 
-State- and city-specific warming behavior
-
-3️⃣ Anomaly Detection (Z-Score Method)
-
-A z-score was used to detect statistically unusual temperatures:
-
-z = (x − μ) / σ
+3️⃣ Anomaly Detection (Z-Score)
+z = (x - μ) / σ
 
 
-Cities with z-scores > 2.5 were flagged as anomalous.
+Cities with |z| > 2.5 were marked as temperature anomalies.
 
 4️⃣ Machine Learning Forecasting
 
-A Random Forest Regressor was trained using:
+A Random Forest model was trained using:
 
-Latitude, longitude
+Latitude & longitude
 
-Historical temperature averages
+Historical averages
 
 Seasonal indicators
 
@@ -123,77 +99,71 @@ Trend features
 
 5️⃣ Visualization
 
-Final outputs were exported to Power BI dashboards showing:
+Power BI dashboards display:
 
-Global warming trends
+Temperature trends
 
-Country and state comparisons
+Anomaly distributions
 
-City anomaly rankings
+Forecast curves
 
-Prediction distributions
+Geographic comparisons
 
 📊 Results
 Global Temperature Trend
 
-Global average temperature increased by ~11.8°C from earliest records to the present dataset endpoint.
+Clear warming trend since the 1850s
 
-Significant acceleration after 1950 correlates with increased industrial emissions.
+Sharp acceleration after 1950
 
-City-Level Anomalies (Top 10)
+Global temperature increased by ~11.8°C across dataset coverage
+
+Top 10 Anomalous Cities (Z-Score)
 City	Mean Temp (°C)	Z-Score	Notes
 Surabaya	28.7	3.87	Highest anomaly
-Nagpur	26.9	3.42	Strong heat events
+Nagpur	26.9	3.42	Heat events
 Bangkok	27.4	3.11	Seasonal instability
 Delhi	29.1	3.05	Urban heat island
-Cairo	28.2	2.97	Persistent warming
-Mumbai	27.8	2.88	Humidity amplification
+Cairo	28.2	2.97	Rapid warming
+Mumbai	27.8	2.88	High humidity effect
 Dhaka	27.6	2.77	Monsoon variability
 Karachi	28.3	2.65	Extreme summer peaks
-Manila	27.1	2.61	Tropical anomalies
+Manila	27.1	2.61	Tropical anomaly
 Singapore	27.9	2.55	Coastal warming
 Machine Learning Model Performance
 Model	RMSE	MAE	R²
 Linear Regression	3.6998	2.8288	0.8583
 Random Forest	0.9637	0.6916	0.9904
 
-Random Forest achieved near-perfect predictive accuracy (R² ≈ 0.99).
+Random Forest achieved near-perfect predictive accuracy.
 
-Forecast
+Forecast Results
 
-Maximum future projected temperature ≈ 34.9°C
+Maximum predicted future temperature: ~34.9°C
 
-Predictions show right-skewed distribution, meaning extreme heat events will become more frequent.
-
-📌 Key Insights
-
-Global warming is consistent, measurable, and accelerating.
-
-Regional differences are significant—urban areas show strong heat anomalies.
-
-State-level warming in India highlights Delhi, TN, and AP as high-risk zones.
-
-ML forecasting strongly supports continuation of warming trends.
+Temperature distribution is right-skewed, indicating more frequent extreme heat events
 
 📈 Power BI Dashboard
 
-This project includes a multi-page Power BI dashboard with:
+This project includes:
 
-Global trends
+Global and national trend pages
 
-Country comparisons
+Seasonal and annual analysis
 
-City-level anomaly scoring
+City anomaly detection visualization
 
-Forecast visualizations
+Forecast dashboard
+
+Screenshots can be added to visualizations/ folder.
 
 📁 Project Structure
-/GlobalTemperatureAnalysis
-│── notebooks/
+GlobalTemperatureAnalysis/
 │── scripts/
 │   └── temperature_analysis.py
+│── notebooks/
 │── data/
-│── output/
+│── outputs/
 │── visualizations/
 │── powerbi-dashboard/
 │── README.md
@@ -205,18 +175,15 @@ pyspark --master local[*]
 Run Analysis Script
 python temperature_analysis.py
 
-Export for Visualization
+Export Results for Dashboard
 df_final.toPandas().to_csv("processed_temperature.csv", index=False)
 
 📝 References
 
-References are consistent with the citations in the main report.
-
-
-BDA_LAB_PROJECT
+The analysis follows the academic structure and dataset references included in the project report.
 
 👨‍💻 Author
 
 Utsav Chatterjee
-BTech in AI & Data Science
+BTech in Artificial Intelligence & Data Science
 REVA University
